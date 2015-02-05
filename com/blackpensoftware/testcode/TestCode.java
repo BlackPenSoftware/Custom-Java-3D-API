@@ -16,6 +16,6 @@ public class TestCode extends Applet{
 	}
 	
 	public void paint(Graphics g){
-		J3D.gen3DRect(g, 100, 100, 200, 200, 100, 50);
+		J3D.gen3DRect(g, 500, 500, 200, 200, 100, 50);
 	}
 }
