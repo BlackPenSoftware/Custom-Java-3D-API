@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import com.blackpensoftware.j3d.core.J3D;
+import com.blackpensoftware.j3d.core.J3DPoint;
 
 @SuppressWarnings("serial")
 public class TestCode extends Applet{
@@ -16,6 +17,22 @@ public class TestCode extends Applet{
 	}
 	
 	public void paint(Graphics g){
-		J3D.gen3DRect(g, 500, 500, 200, 200, 100, 50);
+		J3DPoint pointOne = new J3DPoint();
+		pointOne.setXPos(300);
+		pointOne.setYPos(300);
+		pointOne.setWidth(50);
+		pointOne.setHeight(20);
+		
+		J3D.drawPoint(g, pointOne);
+		
+		J3DPoint pointTwo = new J3DPoint();
+		pointTwo.setXPos(500);
+		pointTwo.setYPos(500);
+		pointTwo.setWidth(50);
+		pointTwo.setHeight(20);
+		
+		J3D.drawPoint(g, pointTwo);
+		
+		J3D.connectPoint(g, pointOne, pointTwo);
 	}
 }
