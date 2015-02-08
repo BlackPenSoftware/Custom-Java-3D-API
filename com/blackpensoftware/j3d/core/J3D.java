@@ -7,17 +7,38 @@ public class J3D {
 	
 	private static Color fillColor = Color.BLACK;	/** Creates the variable for fill color and also sets it to a default black **/
 	
-	public static void gen3DRect(Graphics g, int xPos, int yPos, int width, int height, int depth, int buffer){		/** gen3DRect method that will be used to create 3D rectangles or squares **/
-		
-	}	/** End of the gen3DRect method **/
+	public static void draw3DRect(Graphics g, int xPos, int yPos, int width, int height, int depth, int buffer){		/** draw3DRect method that will be used to create 3D rectangles or squares **/
+		g.setColor(fillColor);
+		g.drawLine(xPos, yPos, xPos + buffer, yPos + depth);	// Line From Top Left of outer square to top left of inner square // 
+		g.drawLine(xPos, yPos, xPos + width, yPos);		// Line from top left to top right of outer square // 
+		g.drawLine(xPos, yPos, xPos, yPos + height); 	// Line from top left to bottom left of outer square // 
+		g.drawLine(xPos, yPos + height, xPos + buffer, (yPos + height) + depth);	// Line from bottom left of outer square to bottom left of inner square // 
+		g.drawLine(xPos + buffer, (yPos + height) + depth, xPos + buffer, yPos + depth);	// Line from bottom left of inner square to top left of inner square // 
+		g.drawLine(xPos + buffer, (yPos + height) + depth, (xPos + buffer) + width, (yPos + height) + depth);	// Line from the bottom left of the inner square to the bottom right of the inner square // 
+		g.drawLine( (xPos + buffer) + width, (yPos + height) + depth, (xPos + buffer) + width, yPos + depth);	// Line from bottom right of outer cube to top right of outer square // 
+		g.drawLine(xPos + width, yPos, (xPos + buffer) + width, yPos + depth);		// Line from top right of outer square to top right of inner square // 
+		g.drawLine(xPos + buffer, yPos + depth, (xPos + buffer) + width, yPos + depth);		// Line from top left of inner cube to top right of inner cube // 
+	}	/** End of the draw3DRect method **/
 	
-	public static void gen3DOval(Graphics g, int xPos, int yPos, int width, int height, int depth, int buffer){		/** gen3DOval method that will be used to create 3D ovals or circles **/
+	public static void draw3DOval(Graphics g, int xPos, int yPos, int width, int height, int depth, int buffer){		/** draw3DOval method that will be used to create 3D ovals or circles **/
 		
-	}	/** End of the gen3DOval method **/	
+	}	/** End of the draw3DOval method **/	
 	
-	public static void gen3DPolygon(Graphics g, J3DPoint[] area){	/** gen3DPolygon method that will be used to create 3D polygon **/
+	public static void draw3DPolygon(Graphics g, J3DPoint[] area){	/** draw3DPolygon method that will be used to create 3D polygon **/
 		
-	}	/** End of the gen3DPolygon method **/	
+	}	/** End of the draw3DPolygon method **/	
+	
+	public static void fill3DRect(Graphics g, int xPos, int yPos, int width, int height, int depth, int buffer){		/** fill3DRect method that will be used to create filled 3D rectangles or squares **/
+		
+	}	/** End of the fill3DRect method **/
+	
+	public static void fill3DOval(Graphics g, int xPos, int yPos, int width, int height, int depth, int buffer){		/** fill3DOval method that will be used to create filled 3D ovals or circles **/
+		
+	}	/** End of the fill3DOval method **/	
+	
+	public static void fill3DPolygon(Graphics g, J3DPoint[] area){	/** fill3DPolygon method that will be used to create a filled 3D polygon **/
+		
+	}	/** End of the fill3DPolygon method **/	
 	
 	public static Color getFillColor(){		/** Gets the fill color of the J3D class **/
 		return fillColor;
@@ -27,14 +48,7 @@ public class J3D {
 		J3D.fillColor = fillColor;
 	}	/** End of the setFillColor method **/	
 	
-	public static void drawPoint(Graphics g, J3DPoint point){	/** Draws a new instance of the point **/
-		g.setColor(fillColor);
-		g.fillRect(point.getXPos(), point.getYPos(), point.getWidth(), point.getHeight());
-	}	/** End of the drawPoint method **/
-	
 	public static void connectPoint(Graphics g, J3DPoint pointOne, J3DPoint pointTwo){	/** Connects two J3D points together **/
-		g.setColor(fillColor);
-		g.drawLine(pointOne.getXPos(), pointOne.getYPos(), pointTwo.getXPos(), pointTwo.getYPos());
 		
 	}	/** End of the connectPoint method **/
 }	/** End of the J3D Class **/	

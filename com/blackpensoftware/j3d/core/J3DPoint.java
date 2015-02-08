@@ -1,52 +1,23 @@
 package com.blackpensoftware.j3d.core;
 
-import java.awt.Color;
-
 public class J3DPoint {
 	
 	private static int xPos;	/** Variable for xPos **/
 	private static int yPos;	/** Variable for yPos **/
-	private static int width;	/** Variable for width **/
-	private static int height;	/** Variable for height **/
-	private static Color fillColor = Color.BLACK;	/** Creates the variable for fill color and also sets it to a default black **/
 	
-	public void setXPos(int x){
+	public void setXPos(int x){		/** Sets the x Position for the J3DPoint **/
 		J3DPoint.xPos += x;
-	}
+	}	/** End of the setXPos method **/
 	
-	public int getXPos(){
+	public int getXPos(){	/** gets the x Position for the J3DPoint **/
 		return xPos;
-	}
+	}	/** End of the getXPos method **/
 	
-	public void setYPos(int y){
+	public void setYPos(int y){		/** Sets the y Position for the J3DPoint **/
 		J3DPoint.yPos += y;
-	}
+	}	/** End of the setYPos method **/
 	
-	public int getYPos(){
+	public int getYPos(){	/** gets the y Position for the J3DPoint **/
 		return yPos;
-	}
-	
-	public void setWidth(int width){
-		J3DPoint.width += width;
-	}
-	
-	public int getWidth(){
-		return width;
-	}
-	
-	public void setHeight(int height){
-		J3DPoint.height += height;
-	}
-	
-	public int getHeight(){
-		return height;
-	}
-
-	public Color getFillColor() {
-		return fillColor;
-	}
-
-	public void setFillColor(Color fillColor) {
-		J3DPoint.fillColor = fillColor;
-	}
+	}	/** End of the getYPos method **/
 }

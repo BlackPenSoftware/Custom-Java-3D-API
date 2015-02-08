@@ -17,17 +17,6 @@ public class TestCode extends Applet{
 	}
 	
 	public void paint(Graphics g){
-		J3DPoint pointOne = new J3DPoint();
-		pointOne.setXPos(300);
-		pointOne.setYPos(300);
-		pointOne.setWidth(50);
-		pointOne.setHeight(20);
-		
-		J3DPoint pointTwo = new J3DPoint();
-		pointTwo.setXPos(500);
-		pointTwo.setYPos(500);
-		pointTwo.setWidth(50);
-		pointTwo.setHeight(20);
-		
+		J3D.draw3DRect(g, 400, 400, 300, 500, 50, 100);
 	}
 }
