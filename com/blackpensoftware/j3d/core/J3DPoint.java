@@ -10,7 +10,7 @@ public class J3DPoint {
 	}	/** End of the setXPos method **/
 	
 	public int getXPos(){	/** gets the x Position for the J3DPoint **/
-		return xPos;
+		return xPos;	
 	}	/** End of the getXPos method **/
 	
 	public void setYPos(int y){		/** Sets the y Position for the J3DPoint **/

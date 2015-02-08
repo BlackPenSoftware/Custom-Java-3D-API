@@ -17,6 +17,11 @@ public class TestCode extends Applet{
 	}
 	
 	public void paint(Graphics g){
-		J3D.draw3DRect(g, 400, 400, 300, 500, 50, 100);
+		int xPos = 400, yPos = 400, width = 300, height = 200, depth = 60, buffer = 50;
+		
+	//	J3D.draw3DRect(g, xPos, yPos, width, height, depth, buffer);
+		
+		J3D.fill3DRect(g, xPos, yPos, width, height, depth, buffer, Color.BLACK, Color.MAGENTA);
+		
 	}
 }
