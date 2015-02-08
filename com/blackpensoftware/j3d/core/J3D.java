@@ -30,7 +30,7 @@ public class J3D {
 	public static void drawPoint(Graphics g, J3DPoint point){	/** Draws a new instance of the point **/
 		g.setColor(fillColor);
 		g.fillRect(point.getXPos(), point.getYPos(), point.getWidth(), point.getHeight());
-	}
+	}	/** End of the drawPoint method **/
 	
 	public static void connectPoint(Graphics g, J3DPoint pointOne, J3DPoint pointTwo){	/** Connects two J3D points together **/
 		g.setColor(fillColor);

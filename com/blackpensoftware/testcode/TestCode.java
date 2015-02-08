@@ -23,16 +23,11 @@ public class TestCode extends Applet{
 		pointOne.setWidth(50);
 		pointOne.setHeight(20);
 		
-		J3D.drawPoint(g, pointOne);
-		
 		J3DPoint pointTwo = new J3DPoint();
 		pointTwo.setXPos(500);
 		pointTwo.setYPos(500);
 		pointTwo.setWidth(50);
 		pointTwo.setHeight(20);
 		
-		J3D.drawPoint(g, pointTwo);
-		
-		J3D.connectPoint(g, pointOne, pointTwo);
 	}
 }
