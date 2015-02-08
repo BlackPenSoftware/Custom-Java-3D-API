@@ -31,16 +31,16 @@ public class J3D {
 	public static void fill3DRect(Graphics g, int xPos, int yPos, int width, int height, int depth, int buffer, Color outlineColor, Color fillColor){		/** fill3DRect method that will be used to create filled 3D rectangles or squares **/
 		
 		g.setColor(fillColor);
-		int[] topXPos = {xPos, xPos + width, (xPos + buffer) + width, xPos + buffer};
-		int[] topYPos = {yPos, yPos, yPos + depth, yPos + depth};
-		int[] leftXPos = {xPos, xPos + buffer, xPos + buffer, xPos};
-		int[] leftYPos = {yPos, yPos + depth, (yPos + depth) + height, yPos + height};
-		int[] frontXPos = {xPos + buffer, (xPos + buffer) + width, (xPos + buffer) + width, xPos + buffer};
-		int[] frontYPos = {yPos + depth, yPos + depth, (yPos + depth) + height, (yPos + depth) + height};
+		int[] topXPos = {xPos, xPos + width, (xPos + buffer) + width, xPos + buffer};	// All of the xPos for the top of the cube going Clockwise
+		int[] topYPos = {yPos, yPos, yPos + depth, yPos + depth};	// All of the yPos for the top of the cube going Clockwise
+		int[] leftXPos = {xPos, xPos + buffer, xPos + buffer, xPos};	// All of the xPos for the left of the cube going Clockwise
+		int[] leftYPos = {yPos, yPos + depth, (yPos + depth) + height, yPos + height};	// All of the yPos for the left of the cube going Clockwise
+		int[] frontXPos = {xPos + buffer, (xPos + buffer) + width, (xPos + buffer) + width, xPos + buffer};	// All of the xPos for the front of the cube going Clockwise
+		int[] frontYPos = {yPos + depth, yPos + depth, (yPos + depth) + height, (yPos + depth) + height};	// All of the xPos for the front of the cube going Clockwise
 		
-		g.fillPolygon(topXPos, topYPos, 4);
-		g.fillPolygon(leftXPos, leftYPos, 4);
-		g.fillPolygon(frontXPos, frontYPos, 4);
+		g.fillPolygon(topXPos, topYPos, 4);	// Fills the polygons with the color at the set x and y points for the top // 
+		g.fillPolygon(leftXPos, leftYPos, 4);	// Fills the polygons with the color at the set x and y points for the left // 
+		g.fillPolygon(frontXPos, frontYPos, 4);		// Fills the polygons with the color at the set x and y points for the front // 
 		
 		g.setColor(outlineColor);	// Sets the color of the lines to be drawn // 
 		g.drawLine(xPos, yPos, xPos + buffer, yPos + depth);	// Line From Top Left of outer square to top left of inner square // 
