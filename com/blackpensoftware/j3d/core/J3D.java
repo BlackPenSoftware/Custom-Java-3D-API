@@ -2,6 +2,7 @@ package com.blackpensoftware.j3d.core;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 public class J3D {
 	
@@ -24,8 +25,37 @@ public class J3D {
 		
 	}	/** End of the draw3DOval method **/	
 	
-	public static void draw3DPolygon(Graphics g, J3DPoint[] area){	/** draw3DPolygon method that will be used to create 3D polygon **/
+	public static void draw3DPolygon(Graphics g, int[] xPos, int[] yPos, int depth, int buffer, Color outLineColor){	/** draw3DPolygon method that will be used to create 3D polygon **/
+		g.setColor(outLineColor);	// Sets the color of the lines to be drawn // 
 		
+		outterBox:	// Draws the outer box // 
+		for(int i = 0; i <= xPos.length - 1; i++){	// Do this the until i is less then or equal to the size of the array called xPos - 1 // 
+			if(i == xPos.length - 1){	// if i is equal to the length of the array called xPos - 1 //
+				// Do nothing
+			}else if(i == 2){	// if i is equal to 2
+				// Do nothing
+			}else{	// if both of those values are false 
+				g.drawLine(xPos[i], yPos[i], xPos[i + 1], yPos[i + 1]);		// Draw a line from the x value of i in (xPos[] x yPos[]) to the value of i + 1 in (xPos[] x yPos[]) // 
+			}	// End of if i
+		}	// End of for
+		
+		innerBox:	// Draws the inner box // 
+		for(int i = 0; i <= xPos.length - 1; i++){	// Do this the until i is less then or equal to the size of the array called xPos - 1 // 
+			if(i == xPos.length - 1){	// if i is equal to the length of the array called xPos - 1 //
+				g.drawLine(xPos[i] + buffer, yPos[i] + depth, xPos[0] + buffer, yPos[0] + depth);	// Draw the final connecting line from the first X-Y position to the last X-Y position //
+			}else{	// if i != xPos.lenth - 1
+				g.drawLine(xPos[i] + buffer, yPos[i] + depth, xPos[i + 1] + buffer, yPos[i + 1] + depth); 	// Draw a line from the x value of i in (xPos[] x yPos[]) to the value of i + 1 in (xPos[] x yPos[]) // 
+			}	// End of if i
+		}	// End of for loop
+		
+		drawLines:	// Draws the lines between the boxes
+		for(int i = 0; i <= xPos.length - 1; i++){	// Do this the until i is less then or equal to the size of the array called xPos - 1 //
+			if(i == 3){
+				// Do Nothing	
+			}else{ // if i != xPos.lenth - 1
+				g.drawLine(xPos[i], yPos[i], xPos[i] + buffer, yPos[i] + depth);  // Draws the corner connection lines for the 3D effect
+			} 	// End if if 3
+		}	// End of for loop
 	}	/** End of the draw3DPolygon method **/	
 	
 	public static void fill3DRect(Graphics g, int xPos, int yPos, int width, int height, int depth, int buffer, Color outlineColor, Color fillColor){		/** fill3DRect method that will be used to create filled 3D rectangles or squares **/
@@ -59,8 +89,50 @@ public class J3D {
 		
 	}	/** End of the fill3DOval method **/	
 	
-	public static void fill3DPolygon(Graphics g, J3DPoint[] area){	/** fill3DPolygon method that will be used to create a filled 3D polygon **/
+	public static void fill3DPolygon(Graphics g, int[] xPos, int[] yPos, int depth, int buffer, Color outLineColor, Color fillColor){	/** fill3DPolygon method that will be used to create a filled 3D polygon **/
+		g.setColor(fillColor);
 		
+		int[] leftXPos = {xPos[0], xPos[1], xPos[1] + buffer, xPos[0] + buffer};	// X positions for the left of the polygon //
+		int[] leftYPos = {yPos[0], yPos[1], yPos[1] + depth, yPos[0] + depth};		// Y positions for the left of the polygon //
+		int[] topXPos = {xPos[1], xPos[1] + buffer, xPos[2] + buffer, xPos[2]};		// X positions for the top of the polygon // 
+		int[] topYPos = {yPos[1], yPos[1] + depth, yPos[2] + depth, yPos[2]};		// Y positions for the top of the polygon // 
+		int[] frontXPos = { xPos[3], xPos[1], xPos[0] + buffer, xPos[3] + buffer};	// X positions for the top of the polygon // 
+		int[] frontYPos = { yPos[3], yPos[1], yPos[0] + depth, yPos[3] + depth};	// Y positions for the top of the polygon // 
+		
+		g.fillPolygon(leftXPos, leftYPos, 4);	// Fills the left of the polygon //
+		g.fillPolygon(topXPos, topYPos, 4);		// Fills the top of the polygon // 
+		g.fillPolygon(frontXPos, frontYPos, 4);		// Fills the front of the polygon // 
+		
+		g.setColor(outLineColor);	// Sets the color of the lines to be drawn // 
+		
+		outterBox:	// Draws the outer box // 
+		for(int i = 0; i <= xPos.length - 1; i++){	// Do this the until i is less then or equal to the size of the array called xPos - 1 // 
+			if(i == xPos.length - 1){	// if i is equal to the length of the array called xPos - 1 //
+				// Do nothing
+			}else if(i == 2){	// if i is equal to 2
+				// Do nothing
+			}else{	// if both of those values are false 
+				g.drawLine(xPos[i], yPos[i], xPos[i + 1], yPos[i + 1]);		// Draw a line from the x value of i in (xPos[] x yPos[]) to the value of i + 1 in (xPos[] x yPos[]) // 
+			}	// End of if i
+		}	// End of for
+		
+		innerBox:	// Draws the inner box // 
+		for(int i = 0; i <= xPos.length - 1; i++){	// Do this the until i is less then or equal to the size of the array called xPos - 1 // 
+			if(i == xPos.length - 1){	// if i is equal to the length of the array called xPos - 1 //
+				g.drawLine(xPos[i] + buffer, yPos[i] + depth, xPos[0] + buffer, yPos[0] + depth);	// Draw the final connecting line from the first X-Y position to the last X-Y position //
+			}else{	// if i != xPos.lenth - 1
+				g.drawLine(xPos[i] + buffer, yPos[i] + depth, xPos[i + 1] + buffer, yPos[i + 1] + depth); 	// Draw a line from the x value of i in (xPos[] x yPos[]) to the value of i + 1 in (xPos[] x yPos[]) // 
+			}	// End of if i
+		}	// End of for loop
+		
+		drawLines:	// Draws the lines between the boxes
+		for(int i = 0; i <= xPos.length - 1; i++){	// Do this the until i is less then or equal to the size of the array called xPos - 1 //
+			if(i == 3){
+				// Do Nothing	
+			}else{ // if i != xPos.lenth - 1
+				g.drawLine(xPos[i], yPos[i], xPos[i] + buffer, yPos[i] + depth);  // Draws the corner connection lines for the 3D effect
+			} 	// End if if 3
+		}	// End of for loop
 	}	/** End of the fill3DPolygon method **/	
 	
 	public static Color getFillColor(){		/** Gets the fill color of the J3D class **/
